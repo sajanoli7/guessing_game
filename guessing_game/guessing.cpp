@@ -61,18 +61,26 @@ void A::result(){
     srand(time(0));
     number=rand()%12+1;
     cout<<"the pool number is "<<number<<endl;
-    if(n==number){
+    if(number<7 && n<7){ 
+        usleep(1000);
         cout<<"congratuations"<<endl;
-        if(n<7 || n>7){
             money=money+bet*2.3;
             cout<<"total money="<<money<<endl;
         }
-        else {
+        else if(number>7 && n>7){ 
+            usleep(1000);
+              cout<<"congratuations"<<endl;
+            money=money+bet*2.3;
+            cout<<"total money="<<money<<endl;
+        }
+        else if (number==7 && n==7){
+            usleep(1000);
+               cout<<"congratuations"<<endl;
             money=money+bet*7;
 usleep(100);
             cout<<"total money="<<money<<endl;
         }
-    }
+    
     else{
         sleep(1);
         cout<<"oops!"<<endl;
@@ -91,6 +99,7 @@ do{
     s1.compare();
 s1.guessing();
 s1.result();
+sleep(1);
 system("clear");
 cout<<"money:$"<<s1.money<<endl;
 cout<<"Do you want to play more y/Y"<<endl;
